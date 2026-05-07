@@ -111,12 +111,7 @@ int x = 10;
 ```
 
 **Output:**
-```
-<KEYWORD, int>
-<IDENTIFIER, x>
-<OPERATOR, =>
-<NUMBER, 10>
-<DELIMITER, ;>
+
 ```
 
 📸 Screenshot: `test_cases/testcase1.png`
@@ -132,22 +127,7 @@ if (y >= 3) return "hello";
 ```
 
 **Output:**
-```
-<KEYWORD, float>
-<IDENTIFIER, y>
-<OPERATOR, =>
-<NUMBER, 3.14>
-<DELIMITER, ;>
-<KEYWORD, if>
-<DELIMITER, (>
-<IDENTIFIER, y>
-<OPERATOR, >=)>
-<NUMBER, 3>
-<DELIMITER, )>
-<KEYWORD, return>
-<STRING, "hello">
-<DELIMITER, ;>
-```
+
 
 📸 Screenshot: `test_cases/testcase2.png`
 
@@ -162,12 +142,6 @@ string msg = "Hello World
 y = x + 2 // this is a comment
 $invalid = 10;
 ```
-
-**Output includes:**
-- Normal tokens for `int`, `x`, `=`, `5`, `;`
-- Unterminated string error for `"Hello World`
-- A `COMMENT` token for `// this is a comment`
-- An `[ERROR]` for unrecognized character `$`
 
 📸 Screenshot: `test_cases/testcase3.png`
 
