@@ -1,0 +1,4 @@
+int x = 5;
+string msg = "Hello World
+y = x + 2 // this is a comment
+$invalid = 10;

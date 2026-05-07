@@ -1,3 +1,8 @@
+All test case images and the transition diagram are in the `diagrams/` folder. Here is the corrected README.md code — copy and paste everything below:
+
+---
+
+```markdown
 # 🔍 Lexical Analyzer — Compiler Design Assignment
 
 A lexical analyzer (scanner) implemented in **Python** for a simplified programming language.  
@@ -6,34 +11,100 @@ This is the first stage of a compiler — it reads raw source code and converts 
 ---
 
 ## 📁 Repository Structure
-
 ```
+
 lexical-analyzer-compiler-design/
 │
-├── lexer.py                  # Main lexical analyzer source code
+├── lexer.py
 │
 ├── diagrams/
-│   └── Transition Diagram.jpg   # FSM transition diagram for all tokens
-│
-├── test_cases/
-│   ├── testcase1.png         # Output screenshot — Basic Declarations
-│   ├── testcase2.png         # Output screenshot — Expressions with String & Operators
-│   └── testcase3.png         # Output screenshot — All Tokens + Error Handling
+│ ├── Transition Diagram.jpg
+│ ├── testcase1.png
+│ ├── testcase2.png
+│ └── testcase3.png
 │
 └── README.md
+
 ```
 
 ---
 
 ## 📌 What is a Lexical Analyzer?
 
-A **lexical analyzer** (also called a *scanner* or *tokenizer*) is the first phase of a compiler. It reads source code character by character and groups them into meaningful units called **tokens**.
+A **lexical analyzer** (also called a *scanner*) is the first phase of a compiler.
+It reads source code character by character and groups them into meaningful units called **tokens**.
 
-Each token has:
-- A **type** (e.g., `KEYWORD`, `IDENTIFIER`, `NUMBER`)
-- A **lexeme** — the actual string from the source code
+**Example:** For `int x = 10;` the lexer produces:
 
-**Example:** For the input `int x = 10;`, the lexer produces:
+```
+
+<KEYWORD, int>
+<IDENTIFIER, x>
+<OPERATOR, =>
+<NUMBER, 10>
+<DELIMITER, ;>
+
+````
+
+---
+
+## 🧩 Supported Token Types
+
+| Token Type | Examples | Rule / Pattern |
+|---|---|---|
+| `KEYWORD` | `int`, `float`, `if`, `while` | Fixed reserved words |
+| `IDENTIFIER` | `x`, `count`, `myVar` | Letter/underscore + letters/digits |
+| `NUMBER` | `0`, `42`, `3.14` | Integer or decimal literal |
+| `STRING` | `"hello"` | Characters enclosed in double quotes |
+| `OPERATOR` | `+` `-` `*` `/` `=` `==` `!=` `<` `>` `<=` `>=` | Arithmetic and comparison |
+| `DELIMITER` | `(` `)` `{` `}` `[` `]` `,` `;` `:` | Punctuation and grouping |
+| `COMMENT` | `// this is a comment` | From `//` to end of line |
+
+**Keywords:** `int` `float` `if` `else` `while` `return` `void` `char` `bool` `for` `break` `continue` `string`
+
+> Whitespace (spaces, tabs, newlines) is **ignored** between tokens.
+
+---
+
+## 🔄 Transition Diagram
+
+![Transition Diagram](diagrams/Transition%20Diagram.jpg)
+
+---
+
+## ▶️ How to Run
+
+**Requirements:** Python 3.x (no external libraries needed)
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/shawnazd/lexical-analyzer-compiler-design.git
+cd lexical-analyzer-compiler-design
+````
+
+2. Create `test.txt` in the same folder as `lexer.py` and write your source code inside.
+
+3. Run:
+
+```bash
+python lexer.py
+```
+
+---
+
+## 🧪 Test Cases
+
+### Test Case 1 — Basic Declarations
+
+**Input:**
+
+```
+int x = 10;
+```
+
+**Output:**
+
 ```
 <KEYWORD, int>
 <IDENTIFIER, x>
@@ -42,100 +113,27 @@ Each token has:
 <DELIMITER, ;>
 ```
 
----
-
-## 🧩 Supported Token Types
-
-| Token Type   | Examples                          | Rule / Pattern                                  |
-|--------------|-----------------------------------|-------------------------------------------------|
-| `KEYWORD`    | `int`, `float`, `if`, `while`     | Fixed reserved words                            |
-| `IDENTIFIER` | `x`, `count`, `myVar`             | Letter/underscore followed by letters/digits    |
-| `NUMBER`     | `0`, `42`, `3.14`                 | Integer or decimal literal                      |
-| `STRING`     | `"hello"`                         | Characters enclosed in double quotes            |
-| `OPERATOR`   | `+`, `-`, `*`, `/`, `=`, `==`, `!=`, `<`, `>`, `<=`, `>=` | Arithmetic and comparison operators |
-| `DELIMITER`  | `(`, `)`, `{`, `}`, `[`, `]`, `,`, `;`, `:` | Punctuation and grouping symbols |
-| `COMMENT`    | `// this is a comment`            | From `//` to end of line                        |
-
-> Whitespace (spaces, tabs, newlines) is **ignored** between tokens.
-
-### Keywords Recognized
-```
-int  float  if  else  while  return  void  char  bool  for  break  continue  string
-```
-
----
-
-## 🔄 Transition Diagram
-
-The finite state machine (FSM) used to recognize all tokens is documented in:
-
-```
-diagrams/Transition Diagram.jpg
-```
-
-The diagram covers all token types: keywords/identifiers, numbers (integer & float), strings, operators (single and multi-character), delimiters, and comments.
-
----
-
-## ▶️ How to Run
-
-### Requirements
-- Python 3.x (no external libraries needed)
-
-### Steps
-
-1. Clone this repository:
-   ```bash
-   git clone https://github.com/shawnazd/lexical-analyzer-compiler-design.git
-   cd lexical-analyzer-compiler-design
-   ```
-
-2. Create a file named `test.txt` in the same directory as `lexer.py` and write your source code inside it.
-
-3. Run the lexer:
-   ```bash
-   python lexer.py
-   ```
-
-4. The tokenized output will be printed to the terminal.
-
----
-
-## 🧪 Test Cases
-
-### Test Case 1 — Basic Declarations
-
-**Input (`test.txt`):**
-```
-int x = 10;
-```
-
-**Output:**
-
-```
-
-📸 Screenshot: `test_cases/testcase1.png`
+![Test Case 1](diagrams/testcase1.png)
 
 ---
 
 ### Test Case 2 — Expressions with String and Operators
 
-**Input (`test.txt`):**
+**Input:**
+
 ```
 float y = 3.14;
 if (y >= 3) return "hello";
 ```
 
-**Output:**
-
-
-📸 Screenshot: `test_cases/testcase2.png`
+![Test Case 2](diagrams/testcase2.png)
 
 ---
 
 ### Test Case 3 — All Tokens + Error Handling
 
-**Input (`test.txt`):**
+**Input:**
+
 ```
 int x = 5;
 string msg = "Hello World
@@ -143,12 +141,48 @@ y = x + 2 // this is a comment
 $invalid = 10;
 ```
 
-📸 Screenshot: `test_cases/testcase3.png`
+**Errors reported:**
+
+```
+[ERROR] Line 2: Unterminated string: "Hello World
+[ERROR] Line 4: Unrecognized character: '$'
+```
+
+![Test Case 3](diagrams/testcase3.png)
 
 ---
 
+## 📊 Output Format
+
+```
+========================================
+       LEXICAL ANALYZER OUTPUT
+========================================
+<TOKEN_TYPE, lexeme>
+...
+========================================
+  Total Tokens : X
+  Total Errors : X
+========================================
+```
+
+---
+
+## 📝 Assignment Info
+
+| Detail     | Info            |
+| ---------- | --------------- |
+| Course     | Compiler Design |
+| University | IUBAT           |
+| Language   | Python 3        |
+
+---
 
 ## 👤 Author
 
 **Shawnaz**  
 GitHub: [@shawnazd](https://github.com/shawnazd)
+
+```
+
+```
